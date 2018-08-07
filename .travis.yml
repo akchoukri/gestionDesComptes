@@ -1,5 +1,15 @@
+
 language: java
 
-jdk:
+ jdk:
  - oraclejdk8
+ 
+ before_install:
+ 	- chmod +x mvnw
+  
+install:
+    - mvn clean install
+    - mvn cobertura:cobertura
+    
+
 
