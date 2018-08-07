@@ -1,13 +1,11 @@
 
 language: java
 
- jdk:
- - oraclejdk8
+ jdk: oraclejdk8
  
- install: true
+install: true
 script: 
-    - mvn clean install
-    - mvn cobertura:cobertura
+     mvn clean install
     
 
 
