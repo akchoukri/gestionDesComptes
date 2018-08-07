@@ -4,6 +4,9 @@ jdk: oraclejdk8
  
 install: true
 script: mvn clean install
-    
+    test:
+    adapter: mongodb
+    database: gestion_Compte
+    encoding: utf8
 
 
