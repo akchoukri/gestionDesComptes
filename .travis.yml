@@ -1,11 +1,9 @@
+sudo: enabled
 language: java
 
  jdk:
  - oraclejdk8
 
-script:
-    - mvn clean install
-    - mvn cobertura:cobertura
-    
-  app: ci-spring-boot
+before_install:
+ 	- chmod +x mvnw
 
