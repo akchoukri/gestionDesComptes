@@ -1,0 +1,93 @@
+ <div class="jumbotron" ng-controller="clientNewCtrl">
+ <!-- <img src="../../app/img/tofParDefaut.png" alt="Smiley face" width="42" height="42"> -->
+    <div class="alert alert-info margin-top-5" ng-show="message">{{message}}</div>
+    <form  name="formNewClient" novalidate>
+    <div class="row">
+        <div class="col-md-6">
+            
+                <div class="form-group" >
+                    <label >First Name</label>
+                    <input type="text" class="form-control" ng-model="client.nomClient" name="nomClient" required>
+                    <span class="error" ng-show="formNewClient.nomClient.$invalid && formNewClient.nomClient.$touched">First Name is required </span>
+                </div>
+                <div class="form-group">
+                    <label >Last Name</label>
+                    <input type="text" class="form-control" ng-model="client.prenomClient" name="prenomClient" required>
+                    <span class="error" ng-show="formNewClient.prenomClient.$invalid && formNewClient.prenomClient.$touched">Last Name is required </span>
+                </div>
+               
+                <div class="form-group" >
+                    <label >Email</label>
+                    <input type="text" class="form-control" ng-model="client.emailClient" name="emailClient" required>
+                    <span class="error" ng-show="formNewClient.emailClient.$invalid && formNewClient.emailClient.$touched">Email is required </span>
+                </div>
+                <div class="form-group">
+                    <label >Tel</label>
+                    <input type="text" class="form-control" ng-model="client.telClient" name="telClient" required>
+                    <span class="error" ng-show="formNewClient.telClient.$invalid && formNewClient.telClient.$touched">Tel is required </span>
+                </div>
+                                <div class="form-group" >
+                    <label >Date Naissance</label>
+                    <input type="date" class="form-control" ng-model="client.dateNaissanceCleint" name="dateNaissanceCleint" placeholder="yyyy-MM-dd" required>
+                    <span class="error" ng-show="formNewClient.dateNaissanceCleint.$invalid && formNewClient.dateNaissanceCleint.$touched">Date Naissance is required </span>
+                </div>
+    <div class="form-group">
+      <label for="exampleInputFile">image </label>
+       <input type="file"  file-model ="imageSrc">
+       
+      </div>
+
+        
+        </div>
+   
+
+
+
+	<div class="col-sm-6 ">
+		<div class="panel panel-default">
+			<div class="panel-heading">User</div>
+			<div class="panel-body">
+				<div class="col-md-12">
+					
+
+						<div class="form-group"
+							ng-class="{ 'has-error': formNewClient.username.$invalid && formNewClient.username.$dirty }">
+							<label for="username">Username:</label> <input type="text"
+								required class="form-control" ng-model="user.username"
+								id="username" name="username">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': formNewClient.username.$invalid && formNewClient.username.$dirty }">
+							<label for="role">Role:</label> <select required
+								class="form-control" ng-model="user.role" id="role"
+								name="role">
+								<option value="ADMIN">Administrator</option>
+								<option value="USER">User</option>
+							</select>
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': formNewClient.password.$invalid && formNewClient.password.$dirty }">
+							<label for="pwd">Password:</label> <input type="password"
+								required class="form-control" id="pwd"
+								ng-model="user.password" name="password">
+						</div>
+
+						
+					
+				</div>
+			</div>
+		</div>
+  </div>
+  
+                  <div class="form-group">
+
+                    <button type="submit"  class="btn btn-success" ng-disabled="formNewClient.$invalid" type="button"  ng-click="save()">Save</button>
+                   
+                    <button class="btn btn-secondary" ng-click="reset()">RESET</button>
+                    
+                </div>
+                </form>
+               
+	</div> 

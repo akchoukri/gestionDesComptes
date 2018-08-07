@@ -1,0 +1,74 @@
+
+ <div class="jumbotron" ng-controller="clientUpdateCtrl">
+     <form  name="formNewClient" novalidate>
+    <div class="row">
+        <div class="col-md-6">
+            
+                <div class="form-group" >
+                    <label >First Name</label>
+                    <input type="text" class="form-control" ng-model="client.nomClient" name="nomClient" required>
+                    <span class="error" ng-show="formNewClient.nomClient.$invalid && formNewClient.nomClient.$touched">First Name is required </span>
+                </div>
+                <div class="form-group">
+                    <label >Last Name</label>
+                    <input type="text" class="form-control" ng-model="client.prenomClient" name="prenomClient" required>
+                    <span class="error" ng-show="formNewClient.prenomClient.$invalid && formNewClient.prenomClient.$touched">Last Name is required </span>
+                </div>
+               
+
+
+            </form>
+        </div>
+   
+
+
+
+	<div class="col-sm-6 ">
+		<div class="panel panel-default">
+			<div class="panel-heading">User</div>
+			<div class="panel-body">
+				<div class="col-md-12">
+					
+
+						<div class="form-group"
+							ng-class="{ 'has-error': formNewClient.username.$invalid && formNewClient.username.$dirty }">
+							<label for="username">Username:</label> <input type="text"
+								required class="form-control" ng-model="user.username"
+								id="username" name="username">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': formNewClient.username.$invalid && formNewClient.username.$dirty }">
+							<label for="role">Role:</label> <select required
+								class="form-control" ng-model="user.role" id="role"
+								name="role">
+								<option value="ADMIN">Administrator</option>
+								<option value="USER">User</option>
+							</select>
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': formNewClient.password.$invalid && formNewClient.password.$dirty }">
+							<label for="pwd">Password:</label> <input type="password"
+								required class="form-control" id="pwd"
+								ng-model="user.password" name="password">
+						</div>
+
+						
+					
+				</div>
+			</div>
+		</div>
+  </div>
+  
+                  <div class="form-group">
+
+                    
+                   <button type="submit" class="btn btn-success" ng-click="updateClient()" type="button" >Update</button>
+                   
+                    <button class="btn btn-secondary"  ng-click="annulerUpdate()" >Annuler</button>
+                    
+                </div>
+                </form>
+
+</div> 

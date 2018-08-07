@@ -1,0 +1,70 @@
+	<div class="container">
+
+
+		<ui-view></ui-view>
+
+	</div>
+
+<div class="container" ng-controller="ComptesContl" ng-init="init()">
+<my-customer info="naomi"></my-customer>
+   <div class="container">
+        <input  type="text" ng-model="codeCompte" ng-keyup="keyUp($event)" placeholder="code compte"  >
+		 <i id="filtersubmit" class="fa fa-search"></i>
+		 <button class="btn" ui-sref="comptes.newCompte">New Compte</button>
+    </div>
+    <div class="container">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Code </th>
+                <th>dateCreation</th>
+                <th>solde</th>
+             <!--    <th>Action</th> -->
+            </tr>
+            </thead>
+            <tbody >
+            <tr ng-repeat="compte in pageCompte.content ">
+                <td>{{ compte.codeCompte | uppercase}}</td>
+                <td>{{ compte.dateCreation | date:'fullDate'}}</td>
+                <td>{{ compte.solde }} DH</td>
+                <td>                      
+					<!-- <button class="btn"  ><i class="fa fa-eye"></i></button> -->
+                    <!-- <button class="btn"    ><i class="fa fa-edit"></i></button>
+                    <button class="btn"  ><i class="fa fa-trash"></i></button> -->
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+
+<!-- directive tabs et pane  -->
+<!-- <div class="container">
+<my-tabs>
+  <my-pane title="Hello">
+    <p>Lorem ipsum dolor sit amet</p>
+  </my-pane>
+  <my-pane title="World">
+    <em>Mauris elementum elementum enim at suscipit.</em>
+    
+  </my-pane>
+</my-tabs>
+</div> -->
+
+
+     <div class="container">
+        <ul class="nav nav-pills pagination">
+            <li class="page-item"><a class="page-link"  ng-click="gotoprevious()">Previous</a></li>
+            <li class="page-item" ng-class="{active:$index==currentPage}" ng-repeat="i in pages track by $index">
+                <a class="clickable page-link" ng-click="gotopage($index)" > {{ $index}} </a>
+            </li>
+            <li class="page-item" id="linknext" ><a class="page-link" ng-click="gotonext()">Next</a></li>
+        </ul>
+    </div>
+
+  
+
+</div>
+

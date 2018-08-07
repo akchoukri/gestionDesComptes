@@ -1,0 +1,66 @@
+
+<div class="container" ng-controller="compteNewCtrl">
+
+	<div class="row">
+		<div class="col-md-6">
+			<form name="formNewCompte" novalidate>
+				<div class="form-group">
+					<label>code compte</label> <input type="text" class="form-control"
+						ng-model="compte.codeCompte" name="codeCompte" required> <span
+						class="error"
+						ng-show="formNewCompte.codeCompte.$invalid && formNewCompte.codeCompte.$touched">code
+						compte is required </span>
+				</div>
+				<div class="form-group">
+					<label>solde</label> <input type="text" class="form-control"
+						ng-model="compte.solde" name="solde" required> <span
+						class="error"
+						ng-show="formNewCompte.solde.$invalid && formNewCompte.solde.$touched">solde
+						is required </span>
+				</div>
+				<div class="form-group">
+					<label>compte courant</label> <input type="radio"
+						ng-model="compteType" value="compteCourant">
+
+				</div>
+				<div class="form-group">
+					<label>compte epargne</label> <input type="radio"
+						ng-model="compteType" value="compteEpargne">
+				</div>
+				<div class="form-group">
+					<div class="form-group" ng-if="compteType=='compteCourant'">
+						<label>decouvert</label> <input type="text" class="form-control"
+							ng-model="$parent.decouvert" name="decouvert">
+
+					</div>
+					<div class="form-group" ng-if="compteType=='compteEpargne'">
+						<label>taux</label> <input type="text" class="form-control"
+							ng-model="$parent.taux" name="taux">
+					</div>
+					</div>
+					<div class="form-group">
+						<label>Client</label> 
+						<input type="text" class="form-control"
+							ng-model="nomClient" name="nomClient" 
+							ng-keyup="autoComplete($event)" >
+						<ul class="list-group" ng-model="hidethis" ng-hide="hidethis">
+							<li class="list-group-item" ng-click="filtertextbox(client)"
+								ng-repeat="client in filterClients">{{client.nomClient}} - {{client.prenomClient}}</li>
+						</ul>
+						<span class="error"
+							ng-show="formNewCompte.nomClient.$invalid && formNewCompte.nomClient.$touched">client
+							is required </span>
+
+					</div>
+					<button type="submit" class="btn btn-success"
+						ng-disabled="formNewCompte.$invalid" type="button"
+						ng-click="save()">Save</button>
+
+					<button class="btn btn-secondary" ng-click="reset()">RESET</button>
+
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

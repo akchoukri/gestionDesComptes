@@ -1,0 +1,139 @@
+
+
+  <div class="container" ng-controller="ComptesContl">
+   <!-- vue consultation -->
+   <div class="alert alert-info margin-top-5" ng-show="messageOp">{{messageOp}}</div>
+   <div class="col-ms-6">
+   <div class="card">
+   <div class="card-header">consultaion de compte</div>	
+   <div class="card-body">
+   <div class="container" >
+ <label>code compte: </label>
+ <input type="text" ng-model="codeCompte" placeholder="code compte"/>
+		<button class="btn btn-secondary"  ng-click="getCompte()">chercher</button>
+		 
+	
+   </div>
+   </div>
+   </div>
+    <!-- 	vue operation -->
+   	  <div class="col-ms-6" id="formOperation"  ng-init="confOperation()">
+   	          <div class="card">
+   <div class="card-header">operation</div>	
+   <div class="card-body">	
+   <form name="formNewOperation" >
+             			 <div class="form-group">
+					<label>compte : {{compte.codeCompte }}</label>
+	              
+				</div>
+              <div class="form-group">
+					
+					
+					<label ng-show="role=='ADMIN'">versement</label> <input type="radio" name="typeOperation"
+						value="versement" ng-model="typeOperation" checked="checked" ng-show="role=='ADMIN'">
+	              <label ng-show="role=='ADMIN'">retrait</label> <input type="radio" name="typeOperation"
+						value="retrait" ng-model="typeOperation" ng-show="role=='ADMIN'">
+						
+				 <label >virement</label> <input type="radio" name="typeOperation"
+						value="virement" ng-model="typeOperation" >
+						
+				</div>
+					<div class="form-group" ng-if="typeOperation=='virement'">
+					<label>Beneficiaire</label> <input type="text" ng-model="$parent.cp2" 	name="cp2">
+	             
+				</div>
+				 <div class="form-group">
+					<label>montant</label> <input type="text"	ng-model="operation.montant" >
+	             
+				</div>
+				
+				<button type="submit" class="btn btn-success"
+				 type="button" ng-click="saveOperation()">Save</button>
+	</form>			
+   </div>
+   </div>
+   </div>	
+  
+   
+  
+   <!-- vue information -->
+     <div class="col-ms-6" ng-if="displayForm==true">	
+        <div class="card">
+   <div class="card-header">information de compte</div>	
+   <div class="card-body">
+   <div class="container spacer"  >
+    <br>
+    <div class="card">
+        <div class="card-header"> </div>
+        <div class="card-body">
+        <label> Client  : </label>
+            <label> {{compte.client.nomClient }}  {{ compte.client.prenomClient }}</label>
+            <br>
+            <label> Code compte  : </label>
+            <label> {{compte.codeCompte}}</label>
+            <br>
+            <label> Solde : {{compte.solde}} DH</label><br>
+            <label> Date creation : {{compte.dateCreation | date:'shortDate'}}</label><br>
+            <label> Type :{{compte.typeCompte}}</label><br>         
+             <label ng-if="compte.typeCompte=='CompteCourant'"> Decouvert : {{compte.decouvert}}</label>
+              <label ng-if="compte.typeCompte=='CompteEpargne'"> Taux : {{compte.taux}}</label><br>
+        </div>
+ 
+    </div>
+</div>
+   </div>
+   </div>
+   </div>	
+   
+   <!-- vue list operation -->
+     <div class="col-ms-6" ng-if="displayForm==true">	
+        	          <div class="card">
+   <div class="card-header">operation</div>	
+   <div class="card-body">	
+    
+<div >
+
+    
+    <div class="container" >
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Num </th>
+                <th>Type</th> 
+                <th>Date</th>
+                <th>montant</th>
+            </tr>
+            </thead>
+            <tbody >
+         <tr ng-repeat="operation in compte.operations">
+                <td >{{ operation.numeroOperation }}</td>
+                <td ng-if="operation.typeOperation=='versement'" style="color: green;">{{ operation.typeOperation }}</td> 
+                <td ng-if="operation.typeOperation=='retrait'" style="color: red;">{{ operation.typeOperation }}</td>
+                <td>{{ operation.dateOperation | date:'short'}}</td>
+                 <td ng-if="operation.typeOperation=='versement'" style="color: green;">{{ operation.montant }} DH</td>
+                 <td ng-if="operation.typeOperation=='retrait'" style="color: red;">{{ operation.montant }} DH</td>
+            </tr> 
+            </tbody>
+
+        </table>
+    </div>
+
+   <!--  <div class="container">
+        <ul class="nav nav-pills pagination">
+            <li class="page-item"><a class="page-link"  ng-click="gotoprevious()">&laquo;</a></li>
+            <li class="page-item" ng-class="{active:$index==currentPage}" ng-repeat="i in pages track by $index">
+                <a class="clickable page-link" ng-click="gotopage($index)" > {{ $index}} </a>
+            </li>
+            <li class="page-item" id="linknext" ><a class="page-link" ng-click="gotonext()">&raquo;</a></li>
+        </ul>
+    </div> -->
+
+
+
+</div> 
+      </div>
+   </div>
+   </div>
+   
+  </div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>gestion Compte</title>
+
+<link rel="stylesheet" type="text/css"
+	href="app/css/bootstrap/dist/css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+	 -->
+<link rel="stylesheet" type="text/css" href="app/css/style.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<base href="/">
+</head>
+
+<body ng-app="myApp">
+
+
+	<!-- View for adding the navigation bar -->
+	<div ui-view="nav"></div>
+
+
+
+	<div class="container" style="margin-top: 50px;">
+		<!-- Main view for showing all views -->
+		<div ui-view="content"></div>
+	</div>
+
+
+	<script type="text/javascript"
+		src="app/node_modules/angular/angular.min.js"></script>
+	<script
+		src="//unpkg.com/angular-ui-router@0.4.2/release/angular-ui-router.js"></script>
+
+	<!-- <script type="text/javascript" src="app/js/login/appAuth.js"></script> -->
+	<script type="text/javascript" src="app/js/app.js"></script>
+
+
+
+	<script type="text/javascript" src="app/js/login/auth-service.js"></script>
+	<script type="text/javascript"
+		src="app/js/login/navigation.controller.js"></script>
+	<script type="text/javascript" src="app/js/login/nav.js"></script>
+	<!--               Controllers            -->
+
+	<!--  client -->
+	<script type="text/javascript"
+		src="app/js/client/controller/clients.controller.js"></script>
+	<script type="text/javascript"
+		src="app/js/client/controller/newClient.controller.js"></script>
+	<script type="text/javascript"
+		src="app/js/client/controller/updateClient.controller.js"></script>
+
+
+	<!--  compte -->
+
+	<script type="text/javascript"
+		src="app/js/compte/controller/comptes.controller.js"></script>
+	<script type="text/javascript"
+		src="app/js/compte/controller/newCompte.controller.js"></script>
+
+
+
+	<script type="text/javascript"
+		src="app/js/login/navigation.controller.js"></script>
+	<!--               Services            -->
+
+	<script type="text/javascript"
+		src="app/js/client/service/client.Data.service.js"></script>
+	<script type="text/javascript"
+		src="app/js/compte/service/compte.Data.service.js"></script>
+	<script type="text/javascript" src="app/js/directives/testdirective.js"></script>
+</body>
+</html>
