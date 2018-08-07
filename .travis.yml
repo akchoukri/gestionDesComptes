@@ -1,13 +1,11 @@
-sudo: enabled
+
 language: java
 
  jdk:
  - oraclejdk8
  
- before_install:
- 	- chmod +x mvnw
-  
-install:
+ install: true
+script: 
     - mvn clean install
     - mvn cobertura:cobertura
     
