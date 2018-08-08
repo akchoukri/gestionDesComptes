@@ -4,8 +4,8 @@ jdk: oraclejdk8
 
 install: true
 script: 
--mvn clean install
--mvn install -DskipTests
+mvn clean install
+mvn install -DskipTests
 
 
 
