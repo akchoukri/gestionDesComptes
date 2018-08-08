@@ -1,13 +1,8 @@
 package com.example;
 
-import static org.assertj.core.api.Assertions.useRepresentation;
-
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.dao.ClientRepositiry;
-import com.example.dao.CompteCourantRepository;
-import com.example.dao.CompteEpargneRepository;
+
 import com.example.dao.CompteRepository;
 import com.example.dao.OperationRepository;
 import com.example.dao.UserRepository;
@@ -27,9 +21,9 @@ import com.example.entities.Compte;
 import com.example.entities.CompteCourant;
 import com.example.entities.CompteEpargne;
 import com.example.entities.Operation;
-import com.example.entities.Retrait;
+
 import com.example.entities.User;
-import com.example.entities.Versement;
+
 import com.example.metier.IBanqueMetier;
 import com.example.storage.StorageService;
 
@@ -49,6 +43,7 @@ public class GestionCompteApplication implements CommandLineRunner {
 	private UserRepository userRepository;
 	@Resource
 	StorageService storageService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(GestionCompteApplication.class, args);
 	}
@@ -56,15 +51,15 @@ public class GestionCompteApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		//storageService.init();
+		// storageService.init();
 		clientRepositiry.deleteAll();
 		Client client1 = new Client("choukri", "akram");
 		Client client2 = new Client("hiyane", "youssef");
 		Client client3 = new Client("rajim", "abdo");
 
-		User user = new User("tromed", "admin", "ADMIN",client1);
-		User user2 = new User("hyoussef", "user", "USER",client2);
-		User user3 = new User("rabdo", "user", "USER",client3);
+		User user = new User("tromed", "admin", "ADMIN", client1);
+		User user2 = new User("hyoussef", "user", "USER", client2);
+		User user3 = new User("rabdo", "user", "USER", client3);
 
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		user2.setPassword(new BCryptPasswordEncoder().encode(user2.getPassword()));
@@ -75,9 +70,9 @@ public class GestionCompteApplication implements CommandLineRunner {
 		clientRepositiry.save(client3);
 		userRepository.deleteAll();
 
-		 userRepository.save(user);
-		 userRepository.save(user2);
-		 userRepository.save(user3);
+		userRepository.save(user);
+		userRepository.save(user2);
+		userRepository.save(user3);
 
 		compteRepository.deleteAll();
 		Compte compteC = new CompteCourant("cp1", new Date(), 2500, client1, 23);
@@ -122,8 +117,8 @@ public class GestionCompteApplication implements CommandLineRunner {
 		System.out.println("operation sur compte ");
 		List<Operation> operations = operationRepository.findByCompte(compteC);
 		System.out.println("operation sur compte size : " + operations.size());
-//		User user1 = userRepository.findByUsername("tromed");
-//		System.out.println("user " + user1.getAuthorities());
+		// User user1 = userRepository.findByUsername("tromed");
+		// System.out.println("user " + user1.getAuthorities());
 
 	}
 }
