@@ -1,11 +1,10 @@
 
 language: java
-
- jdk: oraclejdk8
- 
+jdk: oraclejdk8
+ services:
+  - mongodb
 install: true
-script: 
-     mvn clean install
-    
+script: mvn clean install
+
 
 
